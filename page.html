@@ -308,7 +308,8 @@
     const s = m.subject;
     if (s) chips.push('<span class="ticker-chip"><span class="code">' + escapeHtml(s.code || '') + '</span><span class="name">' +
       escapeHtml([s.name, s.note].filter(Boolean).join(' — ')) + '</span></span>');
-    if (m.entryPrice) chips.push('<span class="ticker-chip"><span class="code">取得単価 ' + fmtNum(m.entryPrice) + unit() + '</span>' +
+    if (m.entryPrice) chips.push('<span class="ticker-chip"><span class="code">取得単価 ' + fmtNum(m.entryPrice) + unit() +
+      (m.shares ? ' × ' + fmtNum(m.shares) + '株' : '') + '</span>' +
       (m.decisionHorizon ? '<span class="name">判断期限 ' + escapeHtml(m.decisionHorizon) + '</span>' : '') + '</span>');
     $('tickerRow').innerHTML = chips.join('');
 
