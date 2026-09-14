@@ -324,6 +324,9 @@
       (m.entryPrice ? '<span><i class="swatch line" style="background:var(--ink-muted)"></i>取得単価 ' + fmtNum(m.entryPrice) + unit() + '</span>' : '');
 
     renderPill();
+    // team は meta から組み立てるため、cycles が先に届くと委員の発言が空になる。
+    // meta が届いた時点で既読のサイクルを描き直す。
+    if (cycles.length) renderCycles(cycles);
   }
 
   function renderPill() {
