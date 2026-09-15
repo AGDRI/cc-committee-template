@@ -19,6 +19,7 @@
     --p-3: #1baf7a;
     --p-4: #eda100;
     --p-5: #e87ba4;
+    --p-6: #7c5cd6;
     --macro: var(--p-1);
     --macro-soft: #E7EEFA;
     --stance-add: var(--bull);
@@ -47,6 +48,7 @@
       --p-3: #199e70;
       --p-4: #c98500;
       --p-5: #d55181;
+      --p-6: #9a7fe6;
       --macro-soft: #1D2A3D;
       --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 10px 28px rgba(0,0,0,0.35);
     }
@@ -67,6 +69,7 @@
     --p-3: #199e70;
     --p-4: #c98500;
     --p-5: #d55181;
+    --p-6: #9a7fe6;
     --macro-soft: #1D2A3D;
     --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 10px 28px rgba(0,0,0,0.35);
   }
@@ -119,11 +122,48 @@
   .cycle-head time { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-muted); }
   .conclusion { padding: 18px; background: var(--macro-soft); border-bottom: 1px solid var(--border); }
   .conclusion-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; }
-  .stance-badge { font-family: var(--font-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.02em; padding: 6px 12px; border-radius: 999px; color: #fff; white-space: nowrap; flex-shrink: 0; background: var(--ink-muted); }
+  /* stanceLabel が長文で届くことがあるため、折り返しを許して欄内に収める（nowrap + flex-shrink:0 だと画面外へ溢れた） */
+  .stance-badge { font-family: var(--font-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.02em; padding: 6px 12px; border-radius: 14px; color: #fff; background: var(--ink-muted);
+    max-width: 100%; min-width: 0; overflow-wrap: anywhere; line-height: 1.5; }
+  /* 短いラベルは従来通り丸いピルに見せる */
+  .stance-badge.short { border-radius: 999px; white-space: nowrap; }
   .stance-badge.add { background: var(--stance-add); }
   .stance-badge.hold { background: var(--stance-hold); }
   .stance-badge.trim { background: var(--stance-trim); }
   .stance-badge.exit { background: var(--stance-exit); }
+  .stance-badge.nittobo { background: var(--p-3); }
+  .stance-badge.pillar { background: var(--p-1); }
+  .stance-badge.mec { background: var(--p-2); }
+
+  .ranking { margin: 4px 0 14px; display: flex; flex-direction: column; gap: 8px; }
+  .rank-row { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--border-strong); border-radius: 4px; padding: 10px 13px; }
+  .rank-row.r1 { border-left-color: var(--bull); }
+  .rank-head { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; }
+  .rank-no { font-family: var(--font-mono); font-weight: 700; font-size: 12px; color: var(--ink-muted); }
+  .rank-name { font-family: var(--font-display); font-weight: 700; font-size: 14.5px; }
+  .rank-figs { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-secondary); margin-left: auto; white-space: nowrap; }
+  .rank-figs b { color: var(--ink); }
+  .rank-why { font-size: 12.5px; color: var(--ink-secondary); margin-top: 5px; }
+  .rank-swing { font-size: 11.5px; color: var(--ink-muted); margin-top: 4px; padding-top: 4px; border-top: 1px dashed var(--border); }
+  .rank-swing b { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; margin-right: 5px; }
+  .rank-badges { display: inline-flex; gap: 5px; }
+  .rank-badge { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .04em; padding: 2px 6px; border-radius: 2px; border: 1px solid var(--border-strong); color: var(--ink-secondary); }
+  .rank-badge.top { border-color: var(--bull); color: var(--bull); }
+  .rank-incr { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-secondary); margin-top: 5px; }
+  .rank-incr b { color: var(--ink); }
+  .rank-incr.thin { color: var(--bear); }
+  .rank-eff { display: flex; flex-wrap: wrap; gap: 5px 16px; font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-secondary); margin-top: 5px; padding-top: 5px; border-top: 1px dashed var(--border); }
+  .rank-eff b { color: var(--ink); }
+  .rank-eff .lbl { font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-muted); margin-right: 4px; }
+  .rank-eff .best b { color: var(--bull); }
+  .oc { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--macro); border-radius: 4px; padding: 10px 13px; margin: 4px 0 12px; font-size: 12px; color: var(--ink-secondary); }
+  .oc b { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-muted); margin-right: 6px; }
+  .oc-line { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink); margin-top: 4px; }
+  .oc-yes { color: var(--bull); }
+  .oc-no { color: var(--bear); }
+  .basis { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 10px 13px; margin: 4px 0 12px; font-size: 12px; color: var(--ink-secondary); }
+  .basis b { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-muted); margin-right: 6px; }
+  .basis-prices { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink); margin-top: 4px; }
   .conclusion-verdict { font-size: 15px; font-weight: 600; color: var(--ink); flex: 1; min-width: 200px; }
   .outlook-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin: 4px 0 14px; }
   .outlook-card { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid transparent; border-radius: 4px; padding: 10px 12px; }
@@ -166,6 +206,16 @@
   .roster-role { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; display: block; margin: 3px 0 8px; }
   .roster-bio { font-size: 12.5px; color: var(--ink-secondary); margin: 0; }
   .roster-quote { font-size: 12px; font-style: italic; color: var(--ink-muted); margin: 10px 0 0; padding-top: 8px; border-top: 1px dashed var(--border); }
+  .roster-meta { font-size: 11.5px; color: var(--ink-secondary); margin: 8px 0 0; line-height: 1.5; }
+  .roster-meta b { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-muted); margin-right: 5px; }
+  .positions { margin-top: 12px; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .positions-h { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-muted); padding: 7px 12px; background: var(--surface); border-bottom: 1px solid var(--border); }
+  .pos-row { display: grid; grid-template-columns: 110px 1fr; gap: 10px; padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 12.5px; }
+  .pos-row:last-child { border-bottom: 0; }
+  .pos-who { font-weight: 600; }
+  .pos-row.rejected .pos-who::after { content: '不採用'; font-family: var(--font-mono); font-size: 9px; color: var(--bear); border: 1px solid var(--bear); border-radius: 2px; padding: 1px 4px; margin-left: 6px; }
+  .pos-why { font-size: 11.5px; color: var(--ink-muted); margin-top: 3px; }
+  .pos-why b { font-family: var(--font-mono); font-size: 9px; letter-spacing: .05em; text-transform: uppercase; margin-right: 4px; }
   .roster-facts { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 2px 0 8px; font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-muted); }
   .p-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
 
@@ -247,7 +297,7 @@
 <script>
 (function () {
   const $ = id => document.getElementById(id);
-  const PALETTE = ['--p-1', '--p-2', '--p-3', '--p-4', '--p-5'];
+  const PALETTE = ['--p-1', '--p-2', '--p-3', '--p-4', '--p-5', '--p-6'];
   const OUTLOOK_KEYS = ['bull', 'base', 'bear'];
 
   let meta = null;
@@ -259,6 +309,10 @@
     return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   }
   function fmtNum(n) { return typeof n === 'number' ? n.toLocaleString('ja-JP') : '—'; }
+  function candidateName(key) {
+    const c = ((meta && meta.candidates) || []).find(x => x.key === key);
+    return c ? (c.name + (c.code ? '（' + c.code + '）' : '')) : key;
+  }
   function unit() { return (meta && meta.outlookLabels && meta.outlookLabels.unit) || ''; }
   function olLabel(k) {
     const d = { bull: '強気', base: 'ベース', bear: '弱気' };
@@ -268,6 +322,18 @@
     if (!iso) return '';
     const d = new Date(iso + 'T00:00:00');
     return isNaN(d.getTime()) ? iso : d.toLocaleDateString('ja-JP', { month: '2-digit', day: '2-digit', weekday: 'short' });
+  }
+  // generatedAt（UTC ISO8601）を JST の「MM/DD(曜) HH:MM」に。date しか無い古いサイクルは日付だけ返す。
+  function fmtStamp(c) {
+    // committedAt（同期時に git のコミット時刻から埋める）を最優先。generatedAt は委員会の自己申告で信用できない値があった。
+    const src = c && (c.committedAt || c.generatedAt);
+    if (src) {
+      const d = new Date(src);
+      if (!isNaN(d.getTime())) {
+        return d.toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo', month: '2-digit', day: '2-digit', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }) + ' JST';
+      }
+    }
+    return fmtDay(c && c.date);
   }
 
   // ---------- header / roster / premise, all driven by state/meta ----------
@@ -298,6 +364,8 @@
           (facts ? '<div class="roster-facts">' + escapeHtml(facts) + '</div>' : '') +
           (p.bio ? '<p class="roster-bio">' + escapeHtml(p.bio) + '</p>' : '') +
           (p.quote ? '<p class="roster-quote">「' + escapeHtml(p.quote) + '」</p>' : '') +
+          (p.bias ? '<p class="roster-meta"><b>既知の偏り</b>' + escapeHtml(p.bias) + '</p>' : '') +
+          (p.falsifier ? '<p class="roster-meta"><b>考えを変える条件</b>' + escapeHtml(p.falsifier) + '</p>' : '') +
         '</div>';
       }).join('');
     }
@@ -305,9 +373,14 @@
     if (m.premise) $('premiseText').textContent = m.premise;
 
     const chips = [];
-    const s = m.subject;
-    if (s) chips.push('<span class="ticker-chip"><span class="code">' + escapeHtml(s.code || '') + '</span><span class="name">' +
-      escapeHtml([s.name, s.note].filter(Boolean).join(' — ')) + '</span></span>');
+    if (Array.isArray(m.candidates) && m.candidates.length) {
+      m.candidates.forEach(c => chips.push('<span class="ticker-chip"><span class="code">' + escapeHtml(c.code || '') +
+        '</span><span class="name">' + escapeHtml(c.name || '') + '</span></span>'));
+    } else {
+      const s = m.subject;
+      if (s) chips.push('<span class="ticker-chip"><span class="code">' + escapeHtml(s.code || '') + '</span><span class="name">' +
+        escapeHtml([s.name, s.note].filter(Boolean).join(' — ')) + '</span></span>');
+    }
     if (m.entryPrice) chips.push('<span class="ticker-chip"><span class="code">取得単価 ' + fmtNum(m.entryPrice) + unit() +
       (m.shares ? ' × ' + fmtNum(m.shares) + '株' : '') + '</span>' +
       (m.decisionHorizon ? '<span class="name">判断期限 ' + escapeHtml(m.decisionHorizon) + '</span>' : '') + '</span>');
@@ -316,7 +389,7 @@
     $('cadenceNote').textContent = ['更新頻度: ' + (m.cadence || ''), m.targetCycles ? '目標' + m.targetCycles + 'サイクル' : '']
       .filter(Boolean).join(' ・ ');
 
-    $('chartTitle').textContent = olLabel('base') + 'シナリオの推移（サイクルごとの結論）';
+    $('chartTitle').textContent = '最有力銘柄の2027年末騰落率シナリオの推移（サイクルごとの結論）';
     $('chartLegend').innerHTML =
       '<span><i class="swatch" style="background:var(--bull)"></i>' + escapeHtml(olLabel('bull')) + '</span>' +
       '<span><i class="swatch" style="background:var(--macro)"></i>' + escapeHtml(olLabel('base')) + '</span>' +
@@ -378,6 +451,13 @@
     const ol = con.outlook || {};
     const stance = con.stance || '';
     const label = con.stanceLabel || stanceLabels[stance] || stance;
+    const positionsHtml = mp => Array.isArray(mp) && mp.length
+      ? '<div class="positions"><div class="positions-h">各委員の最終的な立場（議長が採らなかった意見にはその理由）</div>' + mp.map(x => {
+          const who = (team[x.key] && team[x.key].label) ? team[x.key].label.replace(/（.*$/, '') : escapeHtml(x.key || '');
+          const rejected = x.adopted === false;
+          return '<div class="pos-row' + (rejected ? ' rejected' : '') + '"><span class="pos-who">' + who + '</span><span>' + escapeHtml(x.position || '') +
+            (rejected && x.overrideReason ? '<div class="pos-why"><b>退けた理由</b>' + escapeHtml(x.overrideReason) + '</div>' : '') + '</span></div>';
+        }).join('') + '</div>' : '';
     const col = (cls, title, arr) => Array.isArray(arr) && arr.length
       ? '<div class="conclusion-col ' + cls + '"><span class="conclusion-col-label">' + title + '</span><ul>' +
         arr.map(x => '<li>' + escapeHtml(x) + '</li>').join('') + '</ul></div>' : '';
@@ -390,18 +470,89 @@
     }).join('');
     const watch = Array.isArray(con.nextWatch) && con.nextWatch.length
       ? '<ul class="watch-items" style="margin-top:12px;">' + con.nextWatch.map(w => '<li>' + escapeHtml(w) + '</li>').join('') + '</ul>' : '';
+    const pct = v => (typeof v === 'number' ? (v > 0 ? '+' : '') + v + '%' : '—');
+    const span = h => h ? pct(h.bear) + ' 〜 ' + pct(h.bull) + '（<b>' + pct(h.base) + '</b>）' : '—';
+    const bl = con.baseline;
+    let baselineHtml = '';
+    if (bl) {
+      // 銘柄ごとの入れ子（新形式）と、単一 prices マップ（旧形式）の両対応
+      const rows = Object.keys(bl).filter(k => k !== 'note' && bl[k] && typeof bl[k] === 'object' && 'price' in bl[k])
+        .map(k => escapeHtml(candidateName(k)) + ' <b>' + fmtNum(bl[k].price) + '円</b>' +
+          (bl[k].asOf ? '（' + escapeHtml(bl[k].asOf) + (bl[k].confirmed === false ? ' 以降未確認' : '') + '）' : ''));
+      const legacy = (!rows.length && bl.prices) ? Object.keys(bl.prices).map(k =>
+        escapeHtml(candidateName(k)) + ' <b>' + fmtNum(bl.prices[k]) + '円</b>') : [];
+      const list = rows.length ? rows : legacy;
+      baselineHtml = '<div class="basis"><b>騰落率の基準</b>' +
+        (list.length ? '' : '基準株価が記録されていません') +
+        (bl.note ? escapeHtml(bl.note) : '') +
+        (list.length ? '<div class="basis-prices">' + list.join('　/　') + '</div>' : '') +
+      '</div>';
+    }
+    const basisHtml = con.rankingBasis
+      ? '<div class="basis"><b>順位の判断基準</b>' + escapeHtml(con.rankingBasis) + '</div>' : '';
+    const rankBadges = x => {
+      const b = [];
+      if (x.rank2026) b.push('<span class="rank-badge' + (x.rank2026 === 1 ? ' top' : '') + '">26年末 ' + x.rank2026 + '位</span>');
+      if (x.rank2027) b.push('<span class="rank-badge' + (x.rank2027 === 1 ? ' top' : '') + '">27年末 ' + x.rank2027 + '位</span>');
+      if (x.rankEff2026) b.push('<span class="rank-badge' + (x.rankEff2026 === 1 ? ' top' : '') + '">効率26 ' + x.rankEff2026 + '位</span>');
+      if (x.rankEff2027) b.push('<span class="rank-badge' + (x.rankEff2027 === 1 ? ' top' : '') + '">効率27 ' + x.rankEff2027 + '位</span>');
+      return b.length ? '<span class="rank-badges">' + b.join('') + '</span>' : '';
+    };
+    // 資金効率（年率換算）と上値/下値比。R13により ranking に追加された軸。
+    const num = (v, d) => (typeof v === 'number' ? (d ? v.toFixed(d) : (v > 0 ? '+' : '') + v + '%') : '—');
+    const effHtml = x => {
+      const a = x.annualized, g = x.gainPain;
+      if (!a && !g) return '';
+      const cell = (lbl, val, best) => '<span' + (best ? ' class="best"' : '') + '><span class="lbl">' + lbl + '</span><b>' + val + '</b></span>';
+      const p = [];
+      if (a) { p.push(cell('年率 26末', num(a.h2026))); p.push(cell('年率 27末', num(a.h2027))); }
+      if (g) { p.push(cell('上値/下値 26末', num(g.h2026, 2))); p.push(cell('上値/下値 27末', num(g.h2027, 2))); }
+      return '<div class="rank-eff">' + p.join('') + '</div>';
+    };
+    const ocHtml = (oc => {
+      if (!oc || typeof oc !== 'object') return '';
+      const beats = oc.beats && typeof oc.beats === 'object' ? Object.keys(oc.beats).map(k =>
+        '<span class="' + (oc.beats[k] ? 'oc-yes' : 'oc-no') + '">' + escapeHtml(candidateName(k)) +
+        (oc.beats[k] ? ' 上回る' : ' 下回る') + '</span>').join('　/　') : '';
+      return '<div class="oc"><b>機会費用</b>' +
+        escapeHtml(oc.benchmark || 'ベンチマーク未設定') +
+        (typeof oc.assumedReturn === 'number' ? '（想定年率 ' + oc.assumedReturn + '%' + (oc.source ? '・' + escapeHtml(oc.source) : '') + '）'
+                                              : '（想定年率は未設定）') +
+        (beats ? '<div class="oc-line">' + beats + '</div>' : '') +
+        (oc.note ? '<div style="margin-top:4px;">' + escapeHtml(oc.note) + '</div>' : '') + '</div>';
+    })(con.opportunityCost);
+    const incrHtml = x => typeof x.incr2027 === 'number'
+      ? '<div class="rank-incr' + (x.incr2027 < 10 ? ' thin' : '') + '">26年末→27年末の増分 <b>' + pct(x.incr2027) + '</b>' +
+        (x.incr2027 < 10 ? '（2年目の伸びが薄い — 織り込み完了か調査不足か要検証）' : '') + '</div>'
+      : '';
+    const rankingHtml = Array.isArray(con.ranking) && con.ranking.length
+      ? baselineHtml + basisHtml + ocHtml + '<div class="ranking">' + con.ranking.slice().sort((a, b) => a.rank - b.rank).map(x =>
+          '<div class="rank-row' + (x.rank === 1 ? ' r1' : '') + '">' +
+            '<div class="rank-head">' +
+              '<span class="rank-no">' + x.rank + '位</span>' +
+              '<span class="rank-name">' + escapeHtml(candidateName(x.key)) + '</span>' +
+              rankBadges(x) +
+              '<span class="rank-figs">26年末 ' + span(x.h2026) + ' ／ 27年末 ' + span(x.h2027) + '</span>' +
+            '</div>' +
+            incrHtml(x) +
+            effHtml(x) +
+            (x.rationale ? '<div class="rank-why">' + escapeHtml(x.rationale) + '</div>' : '') +
+            (x.swingFactor ? '<div class="rank-swing"><b>順位が動く条件</b>' + escapeHtml(x.swingFactor) + '</div>' : '') +
+          '</div>').join('') + '</div>'
+      : '';
     const rounds = (Array.isArray(c.rounds) ? c.rounds.slice().sort((a, b) => a.round - b.round) : []);
     const total = meta && meta.targetRoundsPerCycle;
     const roundsHtml = rounds.map(r => roundBlock(r, total)).join('');
     return '<div class="cycle-card">' +
       '<div class="cycle-head"><span class="cycle-no">サイクル ' + c.cycle + (isLatest ? '（最新）' : '') + '</span>' +
         (c.stagnant ? '<span class="stagnant-flag">停滞検知 → 外部招聘</span>' : '') +
-        '<time>' + fmtDay(c.date) + '</time></div>' +
+        '<time datetime="' + escapeHtml(c.committedAt || c.generatedAt || c.date || '') + '">' + fmtStamp(c) + '</time></div>' +
       '<div class="conclusion"><div class="conclusion-top">' +
-          '<span class="stance-badge ' + escapeHtml(stance) + '">' + escapeHtml(label) + '</span>' +
+          '<span class="stance-badge ' + escapeHtml(stance) + (label.length <= 20 ? ' short' : '') + '">' + escapeHtml(label) + '</span>' +
           '<span class="conclusion-verdict">' + escapeHtml(con.verdict || '') + '</span></div>' +
-        '<div class="outlook-row">' + outlookRow + '</div>' +
+        '<div class="outlook-row">' + outlookRow + '</div>' + rankingHtml +
         '<div class="conclusion-cols">' + col('drivers', '上振れ材料', con.keyDrivers) + col('risks', 'リスク要因', con.risks) + '</div>' +
+        positionsHtml(con.memberPositions) +
         watch + '</div>' +
       (isLatest ? '<div class="cycle-rounds">' + roundsHtml + '</div>'
                 : '<details><summary class="legacy-toggle">全ラウンドの詳細を見る</summary><div class="cycle-rounds">' + roundsHtml + '</div></details>') +

@@ -1,0 +1,31 @@
+{
+  "collectedAt": null,
+  "collectedBy": null,
+  "coversSince": null,
+  "forCycle": null,
+  "note": "前サイクル以降に現実世界で起きたこと。クラウド実行側は多くの情報源に egress proxy で届かないため、ここに書かれた事実を最優先で使うこと（data/rules.md R10）。同期ループ（インタラクティブセッション）が1時間ごとに更新する。確認できなかった項目は null のままにする。null を推測で埋めないこと。",
+  "quotes": {
+    "asOf": null,
+    "source": null,
+    "note": "対象ごとの現在値・前日終値・騰落率・値幅・出来高を対象キーごとのオブジェクトとして書く（例: {\"<候補key>\": {\"price\":N,\"prevClose\":N,\"changePct\":N,\"dayLow\":N,\"dayHigh\":N,\"volume\":N}, ...}）。委員会に解釈させる観測コメントは observation に書く。"
+  },
+  "macro": {
+    "note": "対象の業種・テーマに効くマクロ指標をここに置く（例: 半導体テーマなら SOX指数・メモリ市況・為替。個別テーマに応じて項目を増減してよい）。各指標に asOf と source を必ず付け、未確定の期間は confirmed:false や note で明記すること。"
+  },
+  "disclosures": {
+    "note": "対象ごとの適時開示・決算開示の一覧。日付・タイトルを記録し、needsFollowUp:true で委員に本文確認を促す項目を示せる。"
+  },
+  "news": [],
+  "priceHistory": {
+    "note": "対象ごとの年初来高値・安値・直近の終値推移など、現値がどこから来たのかを示す履歴。現値だけでは急騰後の調整なのか材料不足なのか区別がつかないため、ここに記録する（data/rules.md R14 の趣旨）。"
+  },
+  "factCorrections": {
+    "note": "設置者が過去サイクルの議論を読んで発見した事実誤認の訂正。priceFeed・lockedFacts と同様、ここに書かれた数字を委員会自身の調査より優先すること（data/rules.md R12）。訂正は事実についてのものであり、結論を指定するものではない。",
+    "corrections": []
+  },
+  "notFound": [],
+  "rejected": [],
+  "lockedFacts": {
+    "note": "設置者が一次情報で検証した確定値。委員会はこれと異なる数値を結論の計算に使ってはならない（data/rules.md R17）。対象キーごとに置き、doNotUse に『使ってはならない古い数値』を列挙できる。"
+  }
+}
